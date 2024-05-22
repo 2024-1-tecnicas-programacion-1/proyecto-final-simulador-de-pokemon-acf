@@ -1,8 +1,10 @@
 package simulador.entrenador;
 
 import java.util.LinkedList;
+import simulador.pokemon.Pokemon;
 
 public class Entrenador {
+
     private String nombre;
     private LinkedList<Pokemon> listaPokemones;
 
@@ -10,33 +12,42 @@ public class Entrenador {
         this.nombre = nombre;
         this.listaPokemones = listaPokemones;
     }
-    
-    public void agregarPokemon(Pokemon pokemon){
-        listaPokemones.add(pokemon);    
+
+    public void agregarPokemon(Pokemon pokemon) {
+        listaPokemones.add(pokemon);
     }
     // Añade un Pokémon al equipo del entrenador.
-    
-    public void entrenarPokemon(Pokemon pokemon){
-    
+
+    public void entrenarPokemon(Pokemon pokemon) {
+
     }
     //Selecciona un Pokémon para entrenar, mejorando sus estadísticas.
-    
-    public String mostrarPokemones(){
+
+    public void mostrarPokemones() {
         for (int i = 0; i < listaPokemones.size(); i++) {
-            return listaPokemones.get(i);
+            String pokemonLista = listaPokemones.get(i).getNombre();
+            System.out.println(i + ")." + pokemonLista);
         }
-        return null;
     }
     // Muestra una lista de los Pokémones actuales del entrenador.
-    
-    public Pokemon prepararBatalla(){
-        String palabraBusqueda=null;
-        for (int i = 0; i < listaPokemones.size(); i++) {
-            Pokemon nombrePokemonBusqueda=listaPokemones.get(i);
-            if(palabraBusqueda==nombrePokemonBusqueda.getNombre()){
-                return listaPokemones.get(i);
+
+    public Pokemon prepararBatalla() {
+        if (listaPokemones.isEmpty() != true) {
+            System.out.println("Los pokémones que tienes disponibles son: ");
+            mostrarPokemones();
+            System.out.println("Ahora, ¿Que pokémon quieres elegir?");
+            String palabraBusqueda = null;
+            for (int i = 0; i < listaPokemones.size(); i++) {
+                String nombrePokemonBusqueda = listaPokemones.get(i).getNombre();
+                if (palabraBusqueda.equals(nombrePokemonBusqueda)) {
+                    Pokemon pokemonBatalla = listaPokemones.get(i);
+                    return pokemonBatalla;
+                }
             }
+        } else {
+            System.out.println("No tienes ningún Pokémon :(" + "/n !Te deseo suerte con eso¡");
         }
+        return null;
     }
     // Selecciona un Pokémon de su equipo para participar en una batalla.
 }

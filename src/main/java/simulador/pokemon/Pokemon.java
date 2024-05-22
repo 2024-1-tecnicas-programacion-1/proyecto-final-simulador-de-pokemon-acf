@@ -33,5 +33,26 @@ public abstract class Pokemon {
     
     public abstract void entrenar();
     //Mejora las estadísticas del Pokémon.
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public double getSalud() {
+        return salud;
+    }
+
+    public double getPuntosDeAtaque() {
+        return puntosDeAtaque;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+    
     
 }

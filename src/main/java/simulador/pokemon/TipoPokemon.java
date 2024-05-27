@@ -2,7 +2,7 @@ package simulador.pokemon;
 
 public class TipoPokemon {
 
-    enum Tipos {
+    public enum Tipos {
         FUEGO, AGUA, PLANTA, VENENO, ELECTRICO, PSIQUICO, ROCA, TIERRA, NORMAL, VOLADOR, HADA, LUCHA, ACERO, BICHO, HIELO, FANTASMA;
 
         public static double multiplicadorDaño(Tipos atacante, Tipos defensor) {

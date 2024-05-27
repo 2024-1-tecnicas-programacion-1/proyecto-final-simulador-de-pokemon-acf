@@ -10,14 +10,13 @@ public abstract class Pokemon {
     private double puntosDeAtaque;
     // La potencia base de los ataques del Pokémon
     
-    private String tipo;
+    private TipoPokemon.Tipos tipo;
     //El tipo elemental del Pokémon, basado en la enumeración TipoPokemon.
     
-    private String estado;
+    private Estado.Estados estado;
     //El tipo elemental del Pokémon, basado en la enumeración TipoPokemon.
-    
-    
-    public Pokemon(String nombre, double salud, double puntosDeAtaque, String tipo, String estado) {
+
+    public Pokemon(String nombre, double salud, double puntosDeAtaque, TipoPokemon.Tipos tipo, Estado.Estados estado) {
         this.nombre = nombre;
         this.salud = salud;
         this.puntosDeAtaque = puntosDeAtaque;
@@ -25,7 +24,10 @@ public abstract class Pokemon {
         this.estado = estado;
     }
     
-    public abstract void atacar();
+    
+
+    
+    public abstract void atacar(Pokemon oponente);
     //Realiza un ataque al oponente, teniendo en cuenta las ventajas y desventajas de tipo.
  
     public abstract void recibirDaño(int daño);
@@ -46,13 +48,11 @@ public abstract class Pokemon {
         return puntosDeAtaque;
     }
 
-    public String getTipo() {
+    public TipoPokemon.Tipos getTipo() {
         return tipo;
     }
 
-    public String getEstado() {
+    public Estado.Estados getEstado() {
         return estado;
     }
-    
-    
 }

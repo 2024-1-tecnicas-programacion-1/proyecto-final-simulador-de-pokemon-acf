@@ -50,4 +50,13 @@ public class Entrenador {
         return null;
     }
     // Selecciona un Pokémon de su equipo para participar en una batalla.
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public LinkedList<Pokemon> getListaPokemones() {
+        return listaPokemones;
+    }
+    
 }

@@ -19,7 +19,8 @@ public class Entrenador {
     // Añade un Pokémon al equipo del entrenador.
 
     public void entrenarPokemon(Pokemon pokemon) {
-
+        double daño =pokemon.getPuntosDeAtaque()+20;
+        double salud =pokemon.getSalud()+5;
     }
     //Selecciona un Pokémon para entrenar, mejorando sus estadísticas.
 
@@ -57,6 +58,14 @@ public class Entrenador {
 
     public LinkedList<Pokemon> getListaPokemones() {
         return listaPokemones;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setListaPokemones(LinkedList<Pokemon> listaPokemones) {
+        this.listaPokemones = listaPokemones;
     }
     
 }

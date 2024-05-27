@@ -37,6 +37,7 @@ public class Principal {
         Entrenador entrenador = new Entrenador("", listaPokemones);
         LinkedList<Pokemon> listaPokemonesDisponibles = new LinkedList<>();
         listaPokemonesDisponibles.addAll(List.of(charmander, Shellder, caterpie, jolteon, drowzee, diglett, articuno, snorlax, hitmonlee, tentacool));
+
         System.out.println("Bienvenido al Simulador de Batallas Pokémon");
         System.out.println("Elige el numeral de la sección a la que deseas entrar");
         System.out.println("1. Gestionar Entrenadores");
@@ -44,168 +45,170 @@ public class Principal {
         System.out.println("3. Iniciar Batalla");
         System.out.println("4. Salir");
         String opcion = sc.next();
-        switch (opcion) {
-            case "1"://1. Gestionar Entrenadores
-                System.out.println("Bienvenido a Gestionar Entrenadores");
-                System.out.println("Elige el numeral de la sección a la que deseas entrar");
-                System.out.println("1. Registrar nuevo entrenador");
-                System.out.println("2. Ver lista de entrenadores");
-                System.out.println("3. Seleccionar un entrenador");
-                System.out.println("4. Volver al menú principal");
-                opcion = sc.next();
-                switch (opcion) {
-                    case "1"://1. Registrar nuevo entrenador
-                        System.out.println("Por favor ingrese el nombre del entrenador que quiere agregar");
-                        String nombreEntrenador = sc.nextLine();
-                        entrenador.setNombre(nombreEntrenador);
-                        listaEntrenadores.add(entrenador);
-                        System.out.println("Listo, tu entrenador ya fue agregado :)");
-                        break;
-                    case "2"://2. Ver lista de entrenadores
-                        System.out.print("Los entrenadores registrados son: ");
-                        for (int i = 0; i < listaEntrenadores.size(); i++) {
-                            System.out.println(listaEntrenadores.get(i).getNombre());
-                        }
-                        break;
-                    case "3"://3. Seleccionar un entrenador
-                        System.out.println("Elige el nombre del entrenador que deseas elegir");
-                        String nombreEntrenadorElegir = sc.nextLine();
-                        for (int i = 0; i < listaEntrenadores.size(); i++) {
-                            if (nombreEntrenadorElegir.equals(listaEntrenadores.get(i).getNombre())) {
-                                entrenador = listaEntrenadores.get(i);
-                            } else {
-                                System.out.println("Ese entenador no existe :(");
-                            }
-                        }
-                        System.out.println("Elige el numeral de la sección a la que deseas entrar");
-                        System.out.println("1. Ver equipo de Pokémones");
-                        System.out.println("2. Agregar Pokémon al equipo");
-                        System.out.println("3. Entrenar Pokémon");
-                        System.out.println("4. Volver a Gestionar Entrenadores");
-                        opcion = sc.next();
+        do {
+            switch (opcion) {
+                case "1"://1. Gestionar Entrenadores
+                    System.out.println("Bienvenido a Gestionar Entrenadores");
+                    System.out.println("Elige el numeral de la sección a la que deseas entrar");
+                    System.out.println("1. Registrar nuevo entrenador");
+                    System.out.println("2. Ver lista de entrenadores");
+                    System.out.println("3. Seleccionar un entrenador");
+                    System.out.println("4. Volver al menú principal");
+                    opcion = sc.next();
+                    do {
                         switch (opcion) {
-                            case "1"://1. Ver equipo de Pokémones
-                                entrenador.mostrarPokemones();
+                            case "1"://1. Registrar nuevo entrenador
+                                System.out.println("Por favor ingrese el nombre del entrenador que quiere agregar");
+                                String nombreEntrenador = sc.nextLine();
+                                entrenador.setNombre(nombreEntrenador);
+                                listaEntrenadores.add(entrenador);
+                                System.out.println("Listo, tu entrenador ya fue agregado :)");
                                 break;
-                            case "2"://2. Agregar Pokémon al equipo
-                                System.out.println("Los pokémones que puedes añadir a tu equipo son:");
+                            case "2"://2. Ver lista de entrenadores
+                                System.out.print("Los entrenadores registrados son: ");
+                                for (int i = 0; i < listaEntrenadores.size(); i++) {
+                                    System.out.println(listaEntrenadores.get(i).getNombre());
+                                }
+                                break;
+                            case "3"://3. Seleccionar un entrenador
+                                System.out.println("Elige el nombre del entrenador que deseas elegir");
+                                String nombreEntrenadorElegir = sc.nextLine();
+                                for (int i = 0; i < listaEntrenadores.size(); i++) {
+                                    if (nombreEntrenadorElegir.equals(listaEntrenadores.get(i).getNombre())) {
+                                        entrenador = listaEntrenadores.get(i);
+                                    } else {
+                                        System.out.println("Ese entenador no existe :(");
+                                    }
+                                }
+                                System.out.println("Elige el numeral de la sección a la que deseas entrar");
+                                System.out.println("1. Ver equipo de Pokémones");
+                                System.out.println("2. Agregar Pokémon al equipo");
+                                System.out.println("3. Entrenar Pokémon");
+                                System.out.println("4. Volver a Gestionar Entrenadores");
+                                opcion = sc.next();
+                                do {
+                                    switch (opcion) {
+                                        case "1"://1. Ver equipo de Pokémones
+                                            entrenador.mostrarPokemones();
+                                            break;
+                                        case "2"://2. Agregar Pokémon al equipo
+                                            System.out.println("Los pokémones que puedes añadir a tu equipo son:");
+                                            for (int i = 0; i < listaPokemonesDisponibles.size(); i++) {
+                                                System.out.println(listaPokemonesDisponibles.get(i).getNombre());
+                                            }
+                                            System.out.println("Entonces, ¿que Pokémon quieres agregar a tu equipo?, escribe Fin "
+                                                    + "cuando ya no quieras agregar mas Pokémones a tu equipo");
+                                            String nombrePokemonAgregar = sc.nextLine();
+                                            do {
+                                                for (int i = 0; i < listaPokemonesDisponibles.size(); i++) {
+                                                    if (nombrePokemonAgregar.equals(listaPokemonesDisponibles.get(i).getNombre())) {
+                                                        entrenador.agregarPokemon(listaPokemonesDisponibles.get(i));
+                                                    }
+                                                }
+                                            } while (nombrePokemonAgregar != "Fin");
+                                            break;
+                                        case "3"://3. Entrenar Pokémon
+                                            System.out.println("Los pokémones que puedes entrenar en tu equipo son:");
+                                            entrenador.mostrarPokemones();
+                                            System.out.println("Entonces, ¿que Pokémon quieres mejorar en tu equipo?, escribe Fin "
+                                                    + "cuando ya no quieras mejorear ninguno mas Pokémones a tu equipo");
+                                            String nombrePokemonEntrenar = sc.nextLine();
+                                            do {
+                                                for (int i = 0; i < listaPokemones.size(); i++) {
+                                                    if (nombrePokemonEntrenar.equals(listaPokemones.get(i).getNombre())) {
+                                                        entrenador.entrenarPokemon(listaPokemones.get(i));
+                                                    }
+                                                }
+                                            } while (!nombrePokemonEntrenar.equals("Fin"));
+                                            break;
+                                        case "4"://4. Volver a Gestionar Entrenadores
+                                            break;
+                                    }
+                                } while (!"4.".equals(opcion));
+                            case "4"://4. Volver al menú principal
+                                break;
+                        }
+                    } while (!"4".equals(opcion));
+                case "2"://"2. Gestionar Pokémones"
+                    System.out.println("Bienvenido a Gestionar Pokémones");
+                    System.out.println("Elige el numeral de la sección a la que deseas entrar");
+                    System.out.println("1. Ver todos los Pokémones registrados");
+                    System.out.println("2. Registrar nuevo Pokémon");
+                    System.out.println("3. Volver al menú principal");
+                    opcion = sc.next();
+                    do {
+                        switch (opcion) {
+                            case "1"://1. Ver todos los Pokémones registrados
                                 for (int i = 0; i < listaPokemonesDisponibles.size(); i++) {
                                     System.out.println(listaPokemonesDisponibles.get(i).getNombre());
                                 }
-                                System.out.println("Entonces, ¿que Pokémon quieres agregar a tu equipo?, escribe Fin "
-                                        + "cuando ya no quieras agregar mas Pokémones a tu equipo");
-                                String nombrePokemonAgregar = sc.nextLine();
-                                do {
-                                    for (int i = 0; i < listaPokemonesDisponibles.size(); i++) {
-                                        if (nombrePokemonAgregar.equals(listaPokemonesDisponibles.get(i).getNombre())) {
-                                            entrenador.agregarPokemon(listaPokemonesDisponibles.get(i));
-                                        }
-                                    }
-                                } while (nombrePokemonAgregar != "Fin");
                                 break;
-                            case "3"://3. Entrenar Pokémon
-                                System.out.println("Los pokémones que puedes entrenar en tu equipo son:");
-                                entrenador.mostrarPokemones();
-                                System.out.println("Entonces, ¿que Pokémon quieres mejorar en tu equipo?, escribe Fin "
-                                        + "cuando ya no quieras mejorear ninguno mas Pokémones a tu equipo");
-                                String nombrePokemonEntrenar = sc.nextLine();
-                                do {
-                                    for (int i = 0; i < listaPokemones.size(); i++) {
-                                        if (nombrePokemonEntrenar.equals(listaPokemones.get(i).getNombre())) {
-                                            entrenador.entrenarPokemon(listaPokemones.get(i));
-                                        }
-                                    }
-                                } while (!nombrePokemonEntrenar.equals("Fin"));
+                            case "2"://2. Registrar nuevo Pokémon
+                                System.out.println("¿Que Pokémon quieres registrar?");
+                                for (int i = 0; i < listaPokemonesDisponibles.size(); i++) {
+                                    System.out.println(i + "). " + listaPokemonesDisponibles.get(i).getNombre());
+                                }
+                                int numeroPokemon = sc.nextInt();
+                                Pokemon nuevoPokemon = listaPokemonesDisponibles.get(numeroPokemon);
+                                listaPokemonesDisponibles.add(nuevoPokemon);
                                 break;
-                            case "4"://4. Volver a Gestionar Entrenadores
-                                break;
-                        }
-                    case "4"://4. Volver al menú principal
-                        break;
-                }
-            case "2"://"2. Gestionar Pokémones"
-                System.out.println("Bienvenido a Gestionar Pokémones");
-                System.out.println("Elige el numeral de la sección a la que deseas entrar");
-                System.out.println("1. Ver todos los Pokémones registrados");
-                System.out.println("2. Registrar nuevo Pokémon");
-                System.out.println("3. Volver al menú principal");
-                opcion = sc.next();
-                switch (opcion) {
-                    case "1"://1. Ver todos los Pokémones registrados
-                        for (int i = 0; i < listaPokemonesDisponibles.size(); i++) {
-                            System.out.println(listaPokemonesDisponibles.get(i).getNombre());
-                        }
-                        break;
-                    case "2"://2. Registrar nuevo Pokémon
-                        System.out.println("Escribe el las siuientes caracteristicas del Pokémon que deseas registrar");
-                        System.out.println("¿Cúal es su nombre?");
-                        String nombrePokemonRegistrar=sc.next();
-                        System.out.println("Cuales son los puntos de ataque del Pokémon?");
-                        double puntosAtatqueRegistrado=sc.nextDouble();
-                        System.out.println("Cuales son los puntos de salud del Pokémon?");
-                        double puntosSaludRegistrado=sc.nextDouble();
-                        System.out.println("¿Cual es el tipo del Pokémon?");
-                        TipoPokemon tipoPokemonRegistrado=;
-                        System.out.println("¿Cual es el estado del Pokémon?");
-                        Estado 
-                        Pokemon nombrePokemonRegistrar= new Pokemon(nombrePokemonRegistrar, puntosAtatqueRegistrado, puntosSaludRegistrado, TipoPokemon.BICHO, Estado.Estados.DEBILITADO) {
-                        }
-                        break;
-                    case "3"://3. Volver al menú principal
+                            case "3"://3. Volver al menú principal
 
-                        break;
-                }
-                break;
-            case "3": //Iniciar Batalla
-                System.out.println("Bienvenido a Iniciar Batalla");
-                System.out.println("Elige el numeral de la sección a la que deseas entrar");
-                System.out.println("1. Elegir entrenador 1");
-                System.out.println("2. Elegir entrenador 2");
-                System.out.println("3. Seleccionar Pokémon de entrenador 1");
-                System.out.println("4. Seleccionar Pokémon de entrenador 2");
-                System.out.println("5. Comenzar batalla");
-                System.out.println("6. Volver al menú principal");
-                opcion = sc.next();
-                switch (opcion) {
-                    case "1"://1. Elegir entrenador 1
-                        System.out.println("¿Que entrenador quieres elegir para la batalla?");
-                        for (int i = 0; i < listaEntrenadores.size(); i++) {
-                            System.out.println(i + "). " + listaEntrenadores.get(i));
+                                break;
                         }
-                        String nombreEntenadorElegirUno = sc.nextLine();
-                        for (int i = 0; i < listaEntrenadores.size(); i++) {
-                            if (nombreEntenadorElegirUno == listaEntrenadores.get(i).getNombre()) {
-                                Entrenador entrenador1 = listaEntrenadores.get(i);
+                    } while (!"3".equals(opcion));
+                    break;
+                case "3": //Iniciar Batalla
+                    System.out.println("Bienvenido a Iniciar Batalla");
+                    System.out.println("Elige el numeral de la sección a la que deseas entrar");
+                    System.out.println("1. Elegir entrenador 1");
+                    System.out.println("2. Elegir entrenador 2");
+                    System.out.println("3. Seleccionar Pokémon de entrenador 1");
+                    System.out.println("4. Seleccionar Pokémon de entrenador 2");
+                    System.out.println("5. Comenzar batalla");
+                    System.out.println("6. Volver al menú principal");
+                    opcion = sc.next();
+                    switch (opcion) {
+                        case "1"://1. Elegir entrenador 1
+                            System.out.println("¿Que entrenador quieres elegir para la batalla?");
+                            for (int i = 0; i < listaEntrenadores.size(); i++) {
+                                System.out.println(i + "). " + listaEntrenadores.get(i));
                             }
-                        }
-                        break;
-                    case "2"://2. Elegir entrenador 2
-                        System.out.println("¿Que entrenador quieres elegir para la batalla?");
-                        for (int i = 0; i < listaEntrenadores.size(); i++) {
-                            System.out.println(i + "). " + listaEntrenadores.get(i));
-                        }
-                        String nombreEntenadorElegirDos = sc.nextLine();
-                        for (int i = 0; i < listaEntrenadores.size(); i++) {
-                            if (nombreEntenadorElegirDos == listaEntrenadores.get(i).getNombre()) {
-                                Entrenador entrenador2 = listaEntrenadores.get(i);
+                            String nombreEntenadorElegirUno = sc.nextLine();
+                            for (int i = 0; i < listaEntrenadores.size(); i++) {
+                                if (nombreEntenadorElegirUno.equals(listaEntrenadores.get(i).getNombre())) {
+                                    Entrenador entrenador1 = listaEntrenadores.get(i);
+                                }
                             }
-                        }
-                        break;
-                    case "3"://3. Seleccionar Pokémon de entrenador 1
-                        System.out.println("¿Que Pokémon quieres elegir de los que tiene disponible el Entrenador 1?");
+                            break;
+                        case "2"://2. Elegir entrenador 2
+                            System.out.println("¿Que entrenador quieres elegir para la batalla?");
+                            for (int i = 0; i < listaEntrenadores.size(); i++) {
+                                System.out.println(i + "). " + listaEntrenadores.get(i));
+                            }
+                            String nombreEntenadorElegirDos = sc.nextLine();
+                            for (int i = 0; i < listaEntrenadores.size(); i++) {
+                                if (nombreEntenadorElegirDos.equals(listaEntrenadores.get(i).getNombre())) {
+                                    Entrenador entrenador2 = listaEntrenadores.get(i);
+                                }
+                            }
+                            break;
+                        case "3"://3. Seleccionar Pokémon de entrenador 1
+                            System.out.println("¿Que Pokémon quieres elegir de los que tiene disponible el Entrenador 1?");
 
-                }
-                break;
-            case "4": //4. Seleccionar Pokémon de entrenador 2
+                    }
+                    break;
+                case "4": //4. Seleccionar Pokémon de entrenador 2
 
-                break;
-            case "5"://5. Comenzar batalla
+                    break;
+                case "5"://5. Comenzar batalla
 
-                break;
-            case "6"://6. Volver al menú principal
+                    break;
+                case "6"://6. Volver al menú principal
 
-                break;
-        }
+                    break;
+            }
+        } while (!"4".equals(opcion));
     }
 
 }

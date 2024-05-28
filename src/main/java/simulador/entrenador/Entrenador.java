@@ -32,15 +32,11 @@ public class Entrenador {
     }
     // Muestra una lista de los Pokémones actuales del entrenador.
 
-    public Pokemon prepararBatalla() {
+    public Pokemon prepararBatalla(String palabraBusquda) {
         if (listaPokemones.isEmpty() != true) {
-            System.out.println("Los pokémones que tienes disponibles son: ");
-            mostrarPokemones();
-            System.out.println("Ahora, ¿Que pokémon quieres elegir?");
-            String palabraBusqueda = null;
             for (int i = 0; i < listaPokemones.size(); i++) {
                 String nombrePokemonBusqueda = listaPokemones.get(i).getNombre();
-                if (palabraBusqueda.equals(nombrePokemonBusqueda)) {
+                if (palabraBusquda.equals(nombrePokemonBusqueda)) {
                     Pokemon pokemonBatalla = listaPokemones.get(i);
                     return pokemonBatalla;
                 }

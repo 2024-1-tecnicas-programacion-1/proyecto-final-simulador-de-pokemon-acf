@@ -10,12 +10,12 @@ public class Batalla {
             pokemon2.recibirDaño(pokemon1.atacar(pokemon2));
             pokemon1.recibirDaño(pokemon2.atacar(pokemon1));
             if (pokemon2.getSalud() <= 0) {
-                System.out.println("Felicidaes!!! " + entrenador1);
-                System.out.println("Tu" + pokemon1 + " fue el ganador de la batalla");
+                System.out.println("Felicidaes!!! " + entrenador1.getNombre());
+                System.out.println("Tu" + pokemon1.getNombre() + " fue el ganador de la batalla");
             } else {
                 if (pokemon2.getSalud() <= 0) {
-                    System.out.println("Felicidaes!!! " + entrenador2);
-                    System.out.println("Tu" + pokemon2 + " fue el ganador de la batalla");
+                    System.out.println("Felicidaes!!! " + entrenador2.getNombre());
+                    System.out.println("Tu" + pokemon2.getNombre() + " fue el ganador de la batalla");
                 }
             }
         }

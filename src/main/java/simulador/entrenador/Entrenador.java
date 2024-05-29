@@ -19,15 +19,15 @@ public class Entrenador {
     // Añade un Pokémon al equipo del entrenador.
 
     public void entrenarPokemon(Pokemon pokemon) {
-        double daño =pokemon.getPuntosDeAtaque()+20;
-        double salud =pokemon.getSalud()+5;
+        double daño = pokemon.getPuntosDeAtaque() + 20;
+        double salud = pokemon.getSalud() + 5;
     }
     //Selecciona un Pokémon para entrenar, mejorando sus estadísticas.
 
     public void mostrarPokemones() {
         for (int i = 0; i < listaPokemones.size(); i++) {
             String pokemonLista = listaPokemones.get(i).getNombre();
-            System.out.println(i + ")." + pokemonLista);
+            System.out.println((i+1) + ")." + pokemonLista);
         }
     }
     // Muestra una lista de los Pokémones actuales del entrenador.
@@ -63,5 +63,5 @@ public class Entrenador {
     public void setListaPokemones(LinkedList<Pokemon> listaPokemones) {
         this.listaPokemones = listaPokemones;
     }
-    
+
 }
